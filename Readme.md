@@ -1,4 +1,4 @@
-Sure, here's a template for a README file for your project:
+Sure, here's the updated README with the database structure:
 
 ---
 
@@ -8,57 +8,64 @@ Welcome to the Product Management System! This system allows administrators to m
 
 ## Installation
 
-To install and run this project locally, follow these steps:
+### 1. Clone the Repository
 
-1. Clone the repository to your local machine:
+```bash
+git clone https://github.com/your_username/product-management-system.git
+```
 
-    ```bash
-    git clone https://github.com/your_username/product-management-system.git
-    ```
+### 2. Set Up Virtual Environment
 
-2. Navigate to the project directory:
+```bash
+python -m venv venv
+```
 
-    ```bash
-    cd product-management-system
-    ```
+### 3. Activate Virtual Environment
 
-3. Install the required Python packages using pip:
+```bash
+source venv/bin/activate
+```
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 4. Install Dependencies
 
-4. Set up the database:
+```bash
+pip install -r requirements.txt
+```
 
-    - Create a MySQL database named `product_management_system`.
-    - Import the `product_management_system.sql` file located in the `database` directory to initialize the database schema and sample data.
+### 5. Set Up Database
 
-5. Update the database connection configuration in `app.py`:
+- Create a MySQL database named `product_management_system`.
+- Import the `product_management_system.sql` file located in the `database` directory to initialize the database schema and sample data.
 
-    ```python
-    # Update the database connection details accordingly
-    db = mysql.connector.connect(
-        host='localhost',
-        user='your_mysql_username',
-        password='your_mysql_password',
-        database='product_management_system'
-    )
-    ```
+### 6. Update Database Configuration
 
-6. Run the Flask application:
+Update the database connection details in `app.py`:
 
-    ```bash
-    python app.py
-    ```
+```python
+db = mysql.connector.connect(
+    host='localhost',
+    user='your_mysql_username',
+    password='your_mysql_password',
+    database='product_management_system'
+)
+```
 
-7. Access the application in your web browser at `http://localhost:5000`.
+### 7. Run the Application
+
+```bash
+python app.py
+```
+
+### 8. Access the Application
+
+Navigate to `http://localhost:5000` in your web browser.
 
 ## Usage
 
 ### Admin Interface
 
 - Navigate to `http://localhost:5000/login` to access the admin login page.
-- Use the default admin credentials: Username: `admin`, Password: `password`.
+- Use the default admin credentials: Username: `admin`, Password: `1234`.
 - Once logged in, you can add, edit, and delete products using the admin dashboard at `http://localhost:5000/admin`.
 
 ### Public Interface
@@ -72,6 +79,16 @@ To install and run this project locally, follow these steps:
 The database structure consists of the following tables:
 
 - `products`: Stores information about products, including name, price, description, image path, and WhatsApp number for purchase inquiries.
+
+```sql
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    description TEXT,
+    image_path VARCHAR(255)
+);
+```
 
 ## Dependencies
 
