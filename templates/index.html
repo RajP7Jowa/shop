@@ -52,7 +52,7 @@
             {% if products %}
                 {% for product in products %}
                 <div class="col-md-4">
-                    <div class="thumbnail product-card" onclick="showProductDetails('{{ product.name }}', '{{ product.image_path }}', '{{ product.price }}')">
+                    <div class="thumbnail product-card" onclick="showProductDetails('{{ product.name }}', '{{ product.image_path }}','{{ product.description}}', '{{ product.price }}')">
                         <img src="{{ url_for('static', filename=product.image_path) }}" class="img-responsive" alt="{{ product.name }}">
                         <div class="caption">
                             <h3>{{ product.name }}</h3>

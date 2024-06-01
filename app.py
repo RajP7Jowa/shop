@@ -140,7 +140,7 @@ def delete_product(product_id):
 
         # Delete the image file from the server
         if image_path:
-            os.remove(image_path)
+            os.remove("static/"+image_path)
         
         return redirect('/admin')
     else:
