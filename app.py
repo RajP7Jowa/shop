@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
-app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 
 # Function to connect to the MySQL database
@@ -69,7 +69,7 @@ def add_product():
                 cursor = db.cursor()
 
                 # Insert product data into the database
-                cursor.execute('INSERT INTO products (name, price, description, image_path) VALUES (%s, %s, %s, %s)', (name, price, description, filepath))
+                cursor.execute('INSERT INTO products (name, price, description, image_path) VALUES (%s, %s, %s, %s)', (name, price, description, "uploads/"+filename))
                 db.commit()
 
                 # Close the database connection
